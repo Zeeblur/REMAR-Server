@@ -2512,7 +2512,11 @@ if (typeof NProgress != 'undefined') {
 				var handleDataTableButtons = function() {
 				  if ($("#datatable-buttons").length) {
 				    coolTable =	$("#datatable-buttons").DataTable({
-						dom: "Bfrtip",						
+					    rowsGroup: [// Always the array (!) of the column-selectors in specified order to which rows groupping is applied
+                // (column-selector could be any of specified in https://datatables.net/reference/type/column-selector)
+0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,16,17
+    ],
+						dom: "Bfrtip",		
 					  buttons: [
 						{
 						  extend: "copy",
@@ -2576,7 +2580,11 @@ if (typeof NProgress != 'undefined') {
 				var $datatable = $('#datatable-checkbox');
 
 				$datatable.dataTable({
-				  'order': [[ 1, 'asc' ]],
+					'order': [[ 1, 'asc' ]],
+					rowsGroup: [// Always the array (!) of the column-selectors in specified order to which rows groupping is applied
+						// (column-selector could be any of specified in https://datatables.net/reference/type/column-selector)
+0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,16,17
+],
 				  'columnDefs': [
 					{ orderable: false, targets: [0] }
 				  ]
@@ -2587,6 +2595,7 @@ if (typeof NProgress != 'undefined') {
 				  });
 				});
 
+				console.log("manage table");
 				TableManageButtons.init();
 				
 			};
